@@ -5,11 +5,12 @@ import SuccessImg from '../../../assets/Img/meco.png';
 import { useNavigate } from 'react-router-dom';
 
 function SignUpMadal({ setIsModalView }) {
+    //SignUpModal함수는 setIsModalView를 매개변수로 받음
     const navigate = useNavigate();
     const handleStart = () => {
         setIsModalView(false);
-        alert('임시로 회원가입 성공! 튜토리얼 시작합니다');
-        navigate('/metaAbout');
+        alert('임시로 회원가입 성공! 튜토리얼 시작합니다'); //회원가입 성공시 alert 띄워줌
+        navigate('/metaAbout'); ///metaAbout페이지로 이동함
     };
     return (
         <CustomModal>

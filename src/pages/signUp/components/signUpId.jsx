@@ -1,6 +1,41 @@
 import styled from 'styled-components';
 
+<<<<<<< Updated upstream
 function SignUpId({ setUser, id }) {
+=======
+function SignUpId({ setUser, id, setIsCheckAndError }) {
+    //SignUpId함수는 setUser, id, setIsCheckAndError를 매개변수로 받음
+    const [result, setResult] = useState(false); //result라는 useState 선언. 초기값은 false
+    const handleCheckId = async () => {
+        //handleCheckId함수 선언, async(비동기)함수 await랑 같이 써줌 => promise함수의 단점 보완
+        if (!id) setIsCheckAndError((prev) => ({ ...prev, isError: true })); //만약 id가 없으면?아니면? isError를 true로 바꿔서 오류임을 나타냄
+        ///////////////try catch문 공부해야겠다/////////////////////////
+        try {
+            const res = await UserApi.getCheckId(id);
+            setResult(res.data);
+        } catch (err) {}
+
+        result
+            ? setIsCheckAndError((prev) => ({
+                  //위의 try catch문의 result가 true면
+                  ...prev,
+                  isCheckIdMs: '사용할수없는 아이디입니다.', //이 메세지 보여줌
+              }))
+            : setIsCheckAndError((prev) => ({
+                  //위의 try catch문의 result가 false면
+                  ...prev,
+                  isCheckIdMs: '사용가능한 아이디입니다.', //이 메세지 보여줌
+              }));
+    };
+    const handleOnChangeInput = (val) => {
+        //val를 새로 받음
+        setUser((prev) => ({ ...prev, userId: val })); //userId를 새로 입력받은 val로 업뎃
+        setIsCheckAndError((prev) => ({
+            isError: false, //오류상태 false로 초기화
+            isCheckIdMs: '중복확인 해주세요.', //오류가 아니더라도 이 메세지 출력시켜놓음
+        }));
+    };
+>>>>>>> Stashed changes
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
@@ -9,9 +44,18 @@ function SignUpId({ setUser, id }) {
                     type="text"
                     value={id}
                     placeholder="아이디 최대 10글자"
+<<<<<<< Updated upstream
                     onChange={(e) =>
                         setUser((prev) => ({ ...prev, userId: e.target.value }))
                     }
+=======
+                    onChange={(e) => handleOnChangeInput(e.target.value)} //id는 text형식으로 입력. 입력된 값은 위에 handleOnChangeInput함수로 들어감
+                />
+                <IdCheckBt
+                    type="Button"
+                    value="중복확인"
+                    onClick={handleCheckId}
+>>>>>>> Stashed changes
                 />
                 <IdCheckBt type="Button" value="중복확인" />
             </IdBox>
