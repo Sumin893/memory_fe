@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-<<<<<<< Updated upstream
-function SignUpId({ setUser, id }) {
-=======
 function SignUpId({ setUser, id, setIsCheckAndError }) {
     //SignUpId함수는 setUser, id, setIsCheckAndError를 매개변수로 받음
     const [result, setResult] = useState(false); //result라는 useState 선언. 초기값은 false
@@ -35,7 +32,6 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
             isCheckIdMs: '중복확인 해주세요.', //오류가 아니더라도 이 메세지 출력시켜놓음
         }));
     };
->>>>>>> Stashed changes
     return (
         <NameBox0>
             <NameBox1>사용 할 아이디를 작성해주세요.</NameBox1>
@@ -44,18 +40,12 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
                     type="text"
                     value={id}
                     placeholder="아이디 최대 10글자"
-<<<<<<< Updated upstream
-                    onChange={(e) =>
-                        setUser((prev) => ({ ...prev, userId: e.target.value }))
-                    }
-=======
                     onChange={(e) => handleOnChangeInput(e.target.value)} //id는 text형식으로 입력. 입력된 값은 위에 handleOnChangeInput함수로 들어감
                 />
                 <IdCheckBt
                     type="Button"
                     value="중복확인"
                     onClick={handleCheckId}
->>>>>>> Stashed changes
                 />
                 <IdCheckBt type="Button" value="중복확인" />
             </IdBox>

@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 
-<<<<<<< Updated upstream
-function SignUpPassword({ setUser, pw }) {
-=======
 function SignUpPassword({ setUser, pw, setIsCheckAndError }) {
     //SignUpPassword함수는 setUser, pw, setIsCheckAndError를 매개변수로 받음
     const handleOnChangeInput = (val) => {
@@ -10,7 +7,6 @@ function SignUpPassword({ setUser, pw, setIsCheckAndError }) {
         setUser((prev) => ({ ...prev, userPw: val })); //setUser의 이전값을 객체로 풀어서 보여주고, userPw를 새로 입력 받은 val로 업데이트
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));
     }; //오류상태를 이전값에서 초기값인 false로 바꿔줌. 오류 있던 걸 초기화시키는 거
->>>>>>> Stashed changes
     return (
         <NameBox0>
             <NameBox1>사용할 비밀번호를 작성해주세요</NameBox1>
@@ -18,13 +14,7 @@ function SignUpPassword({ setUser, pw, setIsCheckAndError }) {
                 type="password"
                 value={pw}
                 placeholder="비밀번호"
-<<<<<<< Updated upstream
-                onChange={(e) =>
-                    setUser((prev) => ({ ...prev, userPw: e.target.value }))
-                }
-=======
                 onChange={(e) => handleOnChangeInput(e.target.value)} //비밀번호는 password형식으로(암호) 입력되고 위에 handleOnChangeInput함수로 들어감
->>>>>>> Stashed changes
             />
         </NameBox0>
     );

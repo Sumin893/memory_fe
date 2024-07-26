@@ -21,9 +21,6 @@ function SignUpPage() {
         userId: '',
         userPw: '',
     });
-<<<<<<< Updated upstream
-    const [isCheckId, setIsCheckId] = useState(false);
-=======
     //isCheckAndError라는 useState 정의, 이때 초기 값은 false값의 isError, 빈 string의 isCheckIdMs가 포함된 한 개의 객체
     const [isCheckAndError, setIsCheckAndError] = useState({
         isError: false,
@@ -32,15 +29,9 @@ function SignUpPage() {
 
     //////////////////////////////////////여기는 모르겟음 공부해보자//////////////////////////////
     const { mutate: postSignUp } = usePostSignUp(setIsModalView);
->>>>>>> Stashed changes
 
     //페이지를 넘기기 위해 upCount ~ 정의, 안에서 useState이용
     const upCount = () => {
-<<<<<<< Updated upstream
-        if (currentPageNum === 1 && user.name === '') return;
-        if (currentPageNum === 2 && user.userId === '') return;
-        SetCurrentPageNum((prev) => prev + 1);
-=======
         //만약 currentPageNum이 1이고 user.name이 빈 문자열이라면 (&& : 둘 다 해당이라면)
         if (currentPageNum === 1 && user.name === '')
             //isError를 true값으로 바꾼다 => error다!!!!!!
@@ -69,24 +60,17 @@ function SignUpPage() {
         SetCurrentPageNum((prev) => prev + 1);
         //useState를 이용, 위에 error떴던 거를 prev로 생각하고 다시 초기값인 isError: false로, isCheckIdMs를 빈 문자열로 돌려놓음
         setIsCheckAndError((prev) => ({ isError: false, isCheckIdMs: '' }));
->>>>>>> Stashed changes
     };
 
     //페이지를 앞으로 다시 넘어가는 경우도 downCount로 정의해줌
     const downCount = () => {
         //useState를 이용, SetCurrentPageNum으로 원래 페이지 -1을 시켜줌
         SetCurrentPageNum((prev) => prev - 1);
-<<<<<<< Updated upstream
-=======
         //페이지를 다시 뒤로 가는 거니까 error세팅도 초기값인 isError: false로 만들어 줌
         setIsCheckAndError((prev) => ({ ...prev, isError: false }));
->>>>>>> Stashed changes
     };
     //handleSignUp 함수 선언
     const handleSignUp = () => {
-<<<<<<< Updated upstream
-        if (currentPageNum === 3 && user.userPw === '') return;
-=======
         //만약 currentPageNum이 3이고, user.userPw가 빈 문자열이라면
         if (currentPageNum === 3 && user.userPw === '')
             //isError를 true로 바꾼다 => Error다!!!
@@ -94,7 +78,6 @@ function SignUpPage() {
         //error가 아니면 Post요청!(post: 생성)
         postSignUp(user);
         //그리고 modal을 띄움 (setIsModalView의 초기값은 false였다가 true로 바뀌면서 모달이 표시됨)
->>>>>>> Stashed changes
         setIsModalView(true);
     };
 
@@ -113,29 +96,13 @@ function SignUpPage() {
                             />
                             {currentPageNum === 1 && (
                                 <SignUpName
-<<<<<<< Updated upstream
-                                    setUser={setUser}
-                                    name={user.name}
-=======
                                     setUser={setUser} //user라는 useState 정의 했고 setUser로 계속 업뎃
                                     name={user.name} // 이름은 user.name으로 받음
                                     setIsCheckAndError={setIsCheckAndError} //error가 있는지 확인
->>>>>>> Stashed changes
                                 />
                             )}
 
                             {currentPageNum === 2 && (
-<<<<<<< Updated upstream
-                                <SignUpId setUser={setUser} id={user.userId} />
-                            )}
-                            {currentPageNum === 3 && (
-                                <SignUpPassword
-                                    setUser={setUser}
-                                    pw={user.userPw}
-                                />
-                            )}
-                            <ErrorBox></ErrorBox>
-=======
                                 <SignUpId
                                     setUser={setUser} //user라는 useState 정의 했고 setUser로 계속 업뎃
                                     id={user.userId} //id는 user.userId로 받음
@@ -161,10 +128,9 @@ function SignUpPage() {
                                     ? '값을 입력해주세요' //isError가 true면 이거 메세지 출력하고
                                     : currentPageNum === 2 && //페이지가 2이고,
                                         isCheckAndError.isCheckIdError //isCheckIdError를 확인한 뒤
-                                      ? '중복확인 해주세요.' // isCheckIdError가 true면 이거 메세지 출력하고 false면 아무것도 출력하지 않음
-                                      : ''}
+                                    ? '중복확인 해주세요.' // isCheckIdError가 true면 이거 메세지 출력하고 false면 아무것도 출력하지 않음
+                                    : ''}
                             </ErrorBox>
->>>>>>> Stashed changes
                         </Container>
                         <ButtonWrap2>
                             <CustomButton icon={'left'} onClick={downCount}>
