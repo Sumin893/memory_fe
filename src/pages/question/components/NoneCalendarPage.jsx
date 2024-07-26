@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Meco from '../../../assets/Img/meco.png';
 
+//시간가계부 안 썼을 때 페이지 정의
 const NoneCalendarPage = () => {
     return (
         <>

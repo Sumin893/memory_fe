@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+//ChattingUserBox 컴포넌트형 함수 선언, text를 props로 받을거임
 function ChattingUserBox({ text }) {
     return (
         <ChattingBox1>
