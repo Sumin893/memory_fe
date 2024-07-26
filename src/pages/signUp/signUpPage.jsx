@@ -27,7 +27,7 @@ function SignUpPage() {
         isCheckIdMs: '',
     });
 
-    //////////////////////////////////////여기는 모르겟음 공부해보자//////////////////////////////
+    //mutate: 비동기 작업 수행, postSignUp을 불러줌, postSignUp의 T,F에 따라 모달창을 띄울지 말지도 처리됨
     const { mutate: postSignUp } = usePostSignUp(setIsModalView);
 
     //페이지를 넘기기 위해 upCount ~ 정의, 안에서 useState이용
@@ -128,8 +128,8 @@ function SignUpPage() {
                                     ? '값을 입력해주세요' //isError가 true면 이거 메세지 출력하고
                                     : currentPageNum === 2 && //페이지가 2이고,
                                         isCheckAndError.isCheckIdError //isCheckIdError를 확인한 뒤
-                                    ? '중복확인 해주세요.' // isCheckIdError가 true면 이거 메세지 출력하고 false면 아무것도 출력하지 않음
-                                    : ''}
+                                      ? '중복확인 해주세요.' // isCheckIdError가 true면 이거 메세지 출력하고 false면 아무것도 출력하지 않음
+                                      : ''}
                             </ErrorBox>
                         </Container>
                         <ButtonWrap2>
@@ -186,13 +186,9 @@ const ButtonWrap2 = styled.div`
     display: flex;
     justify-content: space-between;
 `;
-<<<<<<< Updated upstream
-const ErrorBox = styled.div``;
-=======
 const ErrorBox = styled.h2`
     color: ${({ isSuccess }) =>
         isSuccess ? '#88d459' : '#a93b3b'}; //성공했으면 초록색, 실패면 빨강이
     font-size: 17px;
     margin-top: 10px;
 `;
->>>>>>> Stashed changes

@@ -6,10 +6,10 @@ function SignUpId({ setUser, id, setIsCheckAndError }) {
     const handleCheckId = async () => {
         //handleCheckId함수 선언, async(비동기)함수 await랑 같이 써줌 => promise함수의 단점 보완
         if (!id) setIsCheckAndError((prev) => ({ ...prev, isError: true })); //만약 id가 없으면?아니면? isError를 true로 바꿔서 오류임을 나타냄
-        ///////////////try catch문 공부해야겠다/////////////////////////
+        //try-catch문: 예외처리 문법, try쪽에 예외가 발생할 가능성이 있는 문장을 쓰고, catch쪽에 예외발생 경우 이를 처리하기 위한 문장을 씀
         try {
-            const res = await UserApi.getCheckId(id);
-            setResult(res.data);
+            const res = await UserApi.getCheckId(id); //서버에 id가 있는지 중복 체크하는 get을 함(조회). await가 쓰였으니 비동기적으로 실행됨
+            setResult(res.data); //서버에서 전송된 결과를 res.data에 저장
         } catch (err) {}
 
         result
