@@ -43,6 +43,8 @@ export default MetaAbout;
 const BackImg = styled.div`
     ${BackGroundImg(Background)}
 `;
+//a%{원하는 형태}
+//정답을 바꾸는 형식의 transition 애니메이션도 있다
 const aniMation = keyframes`
     0% {
         opacity: 0;
@@ -64,6 +66,8 @@ const AboutMetaWord = styled.div`
         font-size: 32px;
         color: white;
         text-align: center;
+        //1. 위에 정의된 애니메이션을, 2. 0초동안 3.ease의 방식으로 표현(여러 방식있음. 통통 튀는 것도 있음! 찾아서 사용)
+        /////////////////////맨뒤 0s는 뭔지 모르겠네?///////////////////
         animation: ${aniMation} 0s ease 0s;
     }
 `;
@@ -74,6 +78,7 @@ const MetaWord1 = styled.div`
     color: #ffffffc7;
     padding-top: 25%;
     padding-left: 15%;
+    //1. 위에 정의한 애니메이션을, 2. 2초동안 3.ease의 방식으로 표현
     animation: ${aniMation} 2s ease 0s;
 `;
 
@@ -83,6 +88,7 @@ const MetaWord2 = styled.div`
     color: #ffffffc7;
     padding-top: 8%;
     padding-left: 60%;
+    //1. 위에 정의한 애니메이션을, 2. 4.5초동안 3.ease의 방식으로 표현
     animation: ${aniMation} 4.5s ease 0s;
 `;
 
@@ -92,12 +98,14 @@ const MetaWord3 = styled.div`
     color: #ffffffc7;
     padding-top: 8%;
     padding-left: 25%;
+    //1. 위에 정의한 애니메이션을, 2. 5.5초동안 3.ease의 방식으로 표현
     animation: ${aniMation} 5.5s ease 0s;
 `;
 const DesWrapper = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 5%;
+    //1. 위에 정의한 애니메이션을, 2. 6초동안 3.ease의 방식으로 표현
     animation: ${aniMation} 6s ease 0s;
 `;
 const AboutMetaDes = styled.div`
@@ -115,5 +123,6 @@ const BtnWrapper = styled.div`
     margin: 0 30px;
     display: flex;
     justify-content: end;
+    //1. 위에 정의한 애니메이션을, 2. 6초동안 3.ease의 방식으로 표현
     animation: ${aniMation} 6s ease 0s;
 `;
