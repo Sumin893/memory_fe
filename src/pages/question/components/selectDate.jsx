@@ -11,19 +11,25 @@ import ReactCalendar from '../../../components/datePicker/datePicker';
 
 function SelectDate() {
     const navigate = useNavigate();
+    //선택할 수 있는 데이터들의 배열
     const testData = ['공부함', '바보', '싸움'];
+    //val 이라는 useState 선언. 초기값은 빈 문자열. 선택된 카테고리 저장하는 상태
     const [val, setVal] = useState('');
+    //isView라는 useState 선언. 초기값은 false(안보이게)
     const [isView, setIsView] = useState(false);
+    //isViewModal이라는 useState 선언. 초기값은 false(안보이게)
     const [isViewModal, setIsViewModal] = useState(false);
+    //useGetToday라는 커스텀 훅 호출
     const today = useGetToday();
-
+    //카테고리를 선택했을 때
     const handleClickCategory = (el) => {
-        setVal(el);
-        setIsView(false);
+        setVal(el); //선택한 카테고리 값을 val 상태에 저장하고
+        setIsView(false); //카테고리 선택 메뉴를 false로 다시 바꿈 (안보이게)
     };
+
     const handleGoChatting = () => {
-        if (val === '') alert('사건을 선택해주세요');
-        navigate(`/question/${val}`);
+        if (val === '') alert('사건을 선택해주세요'); //위에서 사건(카테고리)을 선택하지 않았다면(val에 값이 없음), 그럼 '사건을 선택해주세요'라고 alert창이 뜨게 됨
+        navigate(`/question/${val}`); //선택한 카테고리가 있다면, 이 페이지로 이동함
     };
     return (
         <Wrapper>
@@ -38,35 +44,49 @@ function SelectDate() {
                     <HamHam src={Hami} alt="" />
 
                     <CategoryBox
-                        isView={isView}
-                        onClick={() => setIsView((prev) => !prev)}
+                        isView={isView} //카테고리 박스 클릭하면 아래 카테고리들이 보이게 됨(드롭다운)
+                        onClick={() => setIsView((prev) => !prev)} //isView가 false였으니까 true로 반전 시킴 (현재 상태값을 반전시키는 거)
                     >
+                        {/* 현재 val(카테고리) 상태가 뭐인지 알려줌 */}
                         <Category val={val}>
+                            {/* val이 빈 문자열이 아니면(값이 존재하면), val을 표시하고, 아니면 '사건을 선택해주세요'를 표시함 */}
                             {val ? val : '사건을 선택해주세요.'}
+                            {/* rotate: 회전 각도 지정. isView의 상태에 따라 각도 지정. isView가 true면 아이콘이 180도 회전(아래표시, 드롭다운 열림), false면 0도(위표시, 드롭다운 닫힘) */}
                             <ArrowDowIcon rotate={isView ? '180' : '0'} />
                         </Category>
                     </CategoryBox>
-                    {isView && (
+                    {isView && ( //isView가 true일 때 카테고리들이 표시됨
                         <CategoryWrapper>
-                            {testData.map((el, idx) => (
-                                <CategoryBox key={idx}>
-                                    <Category
-                                        onClick={() => handleClickCategory(el)}
-                                    >
-                                        {el}
-                                    </Category>
-                                </CategoryBox>
-                            ))}
+                            {testData.map(
+                                (
+                                    el,
+                                    idx, //testData 배열을 돌면서 요소를 받아. idx를 키로 사용(공부함, 바보, 싸움)
+                                ) => (
+                                    <CategoryBox key={idx}>
+                                        {/* 박스 클릭하면 카테고리 이름을 map함수에 전달 */}
+                                        <Category
+                                            onClick={() =>
+                                                handleClickCategory(el)
+                                            }
+                                        >
+                                            {el}
+                                        </Category>
+                                    </CategoryBox>
+                                ),
+                            )}
                         </CategoryWrapper>
                     )}
                 </MiddleBox>
             </TopWrapper>
+            {/* isViewModal이 true이면, ReactCalendar로 감 */}
             {isViewModal && <ReactCalendar url={'/questionSum/'} />}
 
             <BottomBox>
+                {/* '대화하러' 버튼 누르면 handleGoChatting 함수로 감 */}
                 <CustomButton icon={'right'} onClick={handleGoChatting}>
                     대화하러
                 </CustomButton>
+                {/* '이전 대화 보기' 버튼 누르면 setIsViewModal 실행, true => false 나 false => true로 값 바뀜. */}
                 <CustomButton
                     icon={'right'}
                     onClick={() => setIsViewModal((prev) => !prev)}

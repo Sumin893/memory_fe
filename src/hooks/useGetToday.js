@@ -1,3 +1,4 @@
+//GetToday라는 useState 커스텀 훅 선언
 export const useGetToday = () => {
     let today = new Date();
     let year = today.getFullYear(); // 년도
