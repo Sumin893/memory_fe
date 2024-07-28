@@ -164,11 +164,17 @@ function StatisticsPage() {
 
     return (
         <Wrapper>
+            {/* testData의 timeSpent라는 값을 받아옴 */}
             <TimeSpent data={testData.timeSpent} />
+            {/* testData의 ComparisonWithLastMonth라는 값을 받아옴 */}
             <ComparisonWithLastMonth data={testData.comparisonWithLastMonth} />
+            {/* testData의 EmotionsSummary라는 값을 받아옴 */}
             <EmotionsSummary data={testData.emotionsSummary} />
+            {/* testData의 PositiveEmotions라는 값을 받아옴 */}
             <PositiveEmotions data={testData.positiveEmotions} />
+            {/* testData의 NeutralEmotions라는 값을 받아옴 */}
             <NeutralEmotions data={testData.neutralEmotions} />
+            {/* testData의 NegativeEmotions라는 값을 받아옴 */}
             <NegativeEmotions data={testData.negativeEmotions} />
         </Wrapper>
     );

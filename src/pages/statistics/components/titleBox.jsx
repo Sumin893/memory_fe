@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Star from '../../../assets/Img/statistics/star.png';
 
+//TitleBox라는 컴포넌트 선언. (다른 페이지에서) text를 props로 받음
 function TitleBox({ text }) {
     return (
         <Wrapper>
@@ -14,7 +15,7 @@ export default TitleBox;
 const Wrapper = styled.div`
     background-color: #ffffff;
     min-width: 250px;
-    max-width: fit-conten;
+    max-width: fit-content;
     min-height: 30px;
     padding: 12px 30px;
     border-radius: 30px;
