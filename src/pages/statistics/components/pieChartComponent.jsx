@@ -8,14 +8,17 @@ import {
     ResponsiveContainer,
 } from 'recharts';
 
+//PieChartComponent라는 함수형 컴포넌트 선언. apiData를 props로 받아옴
 function PieChartComponent({ apiData }) {
-    let data = [];
+    let data = []; //data는 빈 배열
 
-    apiData.map((el) =>
-        data.push({ name: el.category, value: Number(el.hours) }),
-    );
+    apiData.map(
+        (
+            el, //apiData 배열을 돌면서 각 요소를 name과 value를 가진 객체로 배열에 저장함
+        ) => data.push({ name: el.category, value: Number(el.hours) }),
+    ); //el의 category이름을 name에, el의 hours를 숫자로 변환하여 value에 넣고 data배열에 push함.
 
-    const COLORS = ['#F9D6FF', '#E2BBE9', '#9B86BD', '#7776B3', '#5A639C'];
+    const COLORS = ['#F9D6FF', '#E2BBE9', '#9B86BD', '#7776B3', '#5A639C']; //색을 순서대로 할당
 
     const RADIAN = Math.PI / 180;
     const renderCustomizedLabel = ({
