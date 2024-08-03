@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Meco from '../../../assets/Img/meco.png';
 
+//NoneTimeCalendarPage 컴포넌트 선언
 const NoneTimeCalendarPage = () => {
     return (
         <>
