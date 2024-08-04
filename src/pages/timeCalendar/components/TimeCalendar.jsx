@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import GlassmorphismModal from '../../../components/glassmorphismModal/glassmorphismModal';
 
+//TimeCalendarPage라는 컴포넌트 선언. timeCalendarPage에 있는 testData를 props로 받아옴
 const TimeCalendarPage = ({ testData }) => {
     return (
         <>
@@ -12,6 +13,7 @@ const TimeCalendarPage = ({ testData }) => {
                     <Hour>시간</Hour>
                 </Header>
                 <AllContents>
+                    {/* testData를 map을 돌려서 idx값을 가져옴. 아직은 완료 안됐으니까 준비중 alert를 띄움 */}
                     {testData.map((el, idx) => (
                         <Contents key={idx} onClick={() => alert('준비중:)')}>
                             <Emotion>
